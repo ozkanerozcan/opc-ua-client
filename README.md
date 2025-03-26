@@ -43,29 +43,23 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 ### Connection Management
 
-![Connection Initial](docs/images/connection-1.png)
-_Initial connection screen with server URL input_
+<img src="docs/images/connection-1.png" width="80%" alt="Initial connection screen with server URL input"/>
 
-![Connection Endpoints](docs/images/connection-2.png)
-_Available endpoints with security options_
+<img src="docs/images/connection-2.png" width="80%" alt="Available endpoints with security options"/>
 
-![Connection Auth](docs/images/connection-3.png)
-_Authentication dialog for secure connections_
+<img src="docs/images/connection-3.png" width="80%" alt="Authentication dialog for secure connections"/>
 
 ### Read/Write Operations
 
-![Read/Write](docs/images/read-write.png)
-_Read and write values to multiple nodes simultaneously_
+<img src="docs/images/read-write.png" width="80%" alt="Read/Write Operations"/>
 
 ### Node Registration
 
-![Node Registration](docs/images/registration.png)
-_Register nodes for optimized access_
+<img src="docs/images/registration.png" width="80%" alt="Node Registration"/>
 
 ### Subscription Management
 
-![Subscription](docs/images/subscription.png)
-_Monitor nodes in real-time with configurable intervals_
+<img src="docs/images/subscription.png" width="80%" alt="Subscription Management"/>
 
 ## 🚀 Quick Start
 
