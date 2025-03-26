@@ -41,25 +41,7 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 ## 📸 Screenshots
 
-### Connection Management
-
-<img src="docs/images/connection-1.png" width="80%" alt="Initial connection screen with server URL input"/>
-
-<img src="docs/images/connection-2.png" width="80%" alt="Available endpoints with security options"/>
-
-<img src="docs/images/connection-3.png" width="80%" alt="Authentication dialog for secure connections"/>
-
-### Read/Write Operations
-
-<img src="docs/images/read-write.png" width="80%" alt="Read/Write Operations"/>
-
-### Node Registration
-
-<img src="docs/images/registration.png" width="80%" alt="Node Registration"/>
-
-### Subscription Management
-
-<img src="docs/images/subscription.png" width="80%" alt="Subscription Management"/>
+<img src="docs/images/screenshot.gif" alt="Screenshots"/>
 
 ## 🚀 Quick Start
 
