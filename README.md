@@ -43,7 +43,7 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 ### Connection Management
 
-![Connection Management](docs/images/connection.png)
+![Connection Management](docs/images/connection-1.png)(docs/images/connection-2.png)
 _Discover and connect to OPC UA servers with security options_
 
 ### Read/Write Operations
