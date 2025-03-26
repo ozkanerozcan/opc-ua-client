@@ -1,6 +1,6 @@
 # OPC UA Client Application
 
-111A full-stack web application for secure communication with OPC UA servers. Built with Vue.js and Django, this application provides a modern web interface for OPC UA operations with real-time data updates.
+A full-stack web application for secure communication with OPC UA servers. Built with Vue.js and Django, this application provides a modern web interface for OPC UA operations with real-time data updates.
 
 ## Table of Contents
 
