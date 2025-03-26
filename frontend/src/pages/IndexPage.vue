@@ -10,11 +10,23 @@
           <q-card-section>
             <q-input v-model="serverUrl" label="Server URL" :disable="isConnected" />
             <div class="row q-gutter-sm q-mt-md">
-              <q-btn v-if="!isConnected" class="full-width" color="primary" :loading="loadingEndpoints" @click="getEndpoints">
+              <q-btn
+                v-if="!isConnected"
+                class="full-width"
+                color="primary"
+                :loading="loadingEndpoints"
+                @click="getEndpoints"
+              >
                 Get Endpoints
               </q-btn>
 
-              <q-btn v-if="isConnected" class="full-width" color="negative" :loading="loadingDisconnect" @click="disconnect">
+              <q-btn
+                v-if="isConnected"
+                class="full-width"
+                color="negative"
+                :loading="loadingDisconnect"
+                @click="disconnect"
+              >
                 Disconnect
               </q-btn>
             </div>
@@ -35,20 +47,49 @@
             </q-card-section>
             <q-card-section>
               <div v-for="(node, index) in nodeIds" :key="index" class="row q-gutter-sm q-mb-sm">
-                <q-input v-model="nodeIds[index]" label="Node ID" class="col" :disable="loadingRead || loadingWrite" />
-                <q-input v-model="values[index]" label="Value" class="col" :disable="loadingRead || loadingWrite"/>
-                <q-btn flat round color="negative" icon="cancel" @click="removeNodeId(index) " :disable="loadingRead || loadingWrite"
-                       v-if="nodeIds.length > 1"/>
+                <q-input
+                  v-model="nodeIds[index]"
+                  label="Node ID"
+                  class="col"
+                  :disable="loadingRead || loadingWrite"
+                />
+                <q-input
+                  v-model="values[index]"
+                  label="Value"
+                  class="col"
+                  :disable="loadingRead || loadingWrite"
+                />
+                <q-btn
+                  flat
+                  round
+                  color="negative"
+                  icon="cancel"
+                  @click="removeNodeId(index)"
+                  :disable="loadingRead || loadingWrite"
+                  v-if="nodeIds.length > 1"
+                />
               </div>
 
               <div class="row q-mt-md">
                 <div class="col-6 q-pa-xs">
-                  <q-btn class="full-width" color="secondary" @click="writeValues" :loading="loadingWrite" :disable="loadingRead">
+                  <q-btn
+                    class="full-width"
+                    color="secondary"
+                    @click="writeValues"
+                    :loading="loadingWrite"
+                    :disable="loadingRead"
+                  >
                     Write All
                   </q-btn>
                 </div>
                 <div class="col-6 q-pa-xs">
-                  <q-btn class="full-width" color="primary" @click="readValues" :loading="loadingRead" :disable="loadingWrite">
+                  <q-btn
+                    class="full-width"
+                    color="primary"
+                    @click="readValues"
+                    :loading="loadingRead"
+                    :disable="loadingWrite"
+                  >
                     Read All
                   </q-btn>
                 </div>
@@ -64,9 +105,20 @@
               <div class="text-h6">Node Registration</div>
             </q-card-section>
             <q-card-section>
-              <q-input v-model="registerNodeId" label="Node ID" class="q-mb-md" :disable="loadingUnregister || loadingRegister"/>
+              <q-input
+                v-model="registerNodeId"
+                label="Node ID"
+                class="q-mb-md"
+                :disable="loadingUnregister || loadingRegister"
+              />
               <div class="row q-gutter-sm">
-                <q-btn class="full-width" color="primary" @click="registerNode" :loading="loadingRegister" :disable="loadingUnregister">
+                <q-btn
+                  class="full-width"
+                  color="primary"
+                  @click="registerNode"
+                  :loading="loadingRegister"
+                  :disable="loadingUnregister"
+                >
                   Register
                 </q-btn>
               </div>
@@ -83,8 +135,15 @@
                       </q-item-label>
                     </q-item-section>
                     <q-item-section side>
-                      <q-btn flat round color="negative" icon="cancel"
-                             @click="unregisterNode(id)" :loading="loadingUnregister" :disable="loadingRegister"/>
+                      <q-btn
+                        flat
+                        round
+                        color="negative"
+                        icon="cancel"
+                        @click="unregisterNode(id)"
+                        :loading="loadingUnregister"
+                        :disable="loadingRegister"
+                      />
                     </q-item-section>
                   </q-item>
                 </q-list>
@@ -100,10 +159,27 @@
               <div class="text-h6">Subscription Management</div>
             </q-card-section>
             <q-card-section>
-              <q-input v-model="subscribeNodeId" label="Node ID" class="q-mb-md" :disable="loadingSubscribe || loadingUnsubscribe"/>
-              <q-input v-model="subscribeInterval" type="number" label="Interval (ms)" class="q-mb-md" :disable="loadingSubscribe || loadingUnsubscribe" />
+              <q-input
+                v-model="subscribeNodeId"
+                label="Node ID"
+                class="q-mb-md"
+                :disable="loadingSubscribe || loadingUnsubscribe"
+              />
+              <q-input
+                v-model="subscribeInterval"
+                type="number"
+                label="Interval (ms)"
+                class="q-mb-md"
+                :disable="loadingSubscribe || loadingUnsubscribe"
+              />
               <div class="row q-gutter-sm q-mb-md">
-                <q-btn class="full-width" color="primary" @click="subscribe" :loading="loadingSubscribe" :disable="loadingUnsubscribe">
+                <q-btn
+                  class="full-width"
+                  color="primary"
+                  @click="subscribe"
+                  :loading="loadingSubscribe"
+                  :disable="loadingUnsubscribe"
+                >
                   Subscribe
                 </q-btn>
               </div>
@@ -115,17 +191,22 @@
                   <q-item v-for="(sub, id) in activeSubscriptions" :key="id">
                     <q-item-section>
                       <q-item-label>{{ sub.node }}</q-item-label>
-                      <q-item-label caption>
-                        ID: {{ id }}
-                      </q-item-label>
-                      <q-item-label caption>Value: {{ subscribedNode[sub.node] || 'Waiting...' }}</q-item-label>
-                      <q-item-label caption>
-                        Interval: {{ sub.interval }}ms
-                      </q-item-label>
+                      <q-item-label caption> ID: {{ id }} </q-item-label>
+                      <q-item-label caption
+                        >Value: {{ subscribedNode[sub.node] || 'Waiting...' }}</q-item-label
+                      >
+                      <q-item-label caption> Interval: {{ sub.interval }}ms </q-item-label>
                     </q-item-section>
                     <q-item-section side>
-                      <q-btn flat round color="negative" icon="cancel"
-                             @click="unsubscribe(id)" :loading="loadingUnsubscribe" :disable="loadingSubscribe"/>
+                      <q-btn
+                        flat
+                        round
+                        color="negative"
+                        icon="cancel"
+                        @click="unsubscribe(id)"
+                        :loading="loadingUnsubscribe"
+                        :disable="loadingSubscribe"
+                      />
                     </q-item-section>
                   </q-item>
                 </q-list>
@@ -135,55 +216,58 @@
         </div>
       </template>
 
-    <q-dialog v-model="dialogEndpoints" full-width position="bottom">
-      <q-card>
-        <q-list>
-          <template
-            v-for="(endpoint, index) in endpoints"
-            :key="index"
-          >
-            <q-item>
-              <q-item-section>
-                <q-item-label>{{ endpoint.endpoint_url }}</q-item-label>
-                <q-item-label caption>
-                  Policy: {{ endpoint.security_policy_uri.split('#')[1] }}
-                </q-item-label>
-                <q-item-label caption>
-                  Security Mode: {{ endpoint.security_mode }}
-                </q-item-label>
-                <q-item-label caption>
-                  Security Level: {{ endpoint.security_level }}
-                </q-item-label>
-              </q-item-section>
+      <q-dialog v-model="dialogEndpoints" full-width position="bottom">
+        <q-card>
+          <q-list>
+            <template v-for="(endpoint, index) in endpoints" :key="index">
+              <q-item>
+                <q-item-section>
+                  <q-item-label>{{ endpoint.endpoint_url }}</q-item-label>
+                  <q-item-label caption>
+                    Policy: {{ endpoint.security_policy_uri.split('#')[1] }}
+                  </q-item-label>
+                  <q-item-label caption> Security Mode: {{ endpoint.security_mode }} </q-item-label>
+                  <q-item-label caption>
+                    Security Level: {{ endpoint.security_level }}
+                  </q-item-label>
+                </q-item-section>
 
-              <q-item-section side>
-                <q-btn color="primary" :loading="loadingConnect && JSON.stringify(endpoint) === JSON.stringify(selectedEndpoint)" :disable="loadingConnect"  @click="beforeConnect(index)">
-                  Connect
-                </q-btn>
-              </q-item-section>
-            </q-item>
-          </template>
-        </q-list>
-      </q-card>
-    </q-dialog>
+                <q-item-section side>
+                  <q-btn
+                    color="primary"
+                    :loading="
+                      loadingConnect &&
+                      JSON.stringify(endpoint) === JSON.stringify(selectedEndpoint)
+                    "
+                    :disable="loadingConnect"
+                    @click="beforeConnect(index)"
+                  >
+                    Connect
+                  </q-btn>
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-list>
+        </q-card>
+      </q-dialog>
 
-    <q-dialog v-model="dialogAuth" persistent>
-      <q-card style="min-width: 350px">
-        <q-card-section>
-          <div class="text-h6">Authentication</div>
-        </q-card-section>
+      <q-dialog v-model="dialogAuth" persistent>
+        <q-card style="min-width: 350px">
+          <q-card-section>
+            <div class="text-h6">Authentication</div>
+          </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input dense v-model="username" autofocus label="Username"/>
-          <q-input dense v-model="password" label="Password"/>
-        </q-card-section>
+          <q-card-section class="q-pt-none">
+            <q-input dense v-model="username" autofocus label="Username" />
+            <q-input dense v-model="password" label="Password" />
+          </q-card-section>
 
-        <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Cancel" @click="loadingConnect = false" v-close-popup />
-          <q-btn flat label="Connect" :loading="loadingConnectAuth" @click="connect" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+          <q-card-actions align="right" class="text-primary">
+            <q-btn flat label="Cancel" @click="loadingConnect = false" v-close-popup />
+            <q-btn flat label="Connect" :loading="loadingConnectAuth" @click="connect" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
@@ -202,12 +286,12 @@ const dialogEndpoints = ref(false)
 const loadingConnect = ref(false)
 const loadingConnectAuth = ref(false)
 const loadingDisconnect = ref(false)
-const loadingRegister  = ref(false)
+const loadingRegister = ref(false)
 const loadingUnregister = ref(false)
-const loadingSubscribe  = ref(false)
+const loadingSubscribe = ref(false)
 const loadingUnsubscribe = ref(false)
-const loadingRead  = ref(false)
-const loadingWrite  = ref(false)
+const loadingRead = ref(false)
+const loadingWrite = ref(false)
 const selectedEndpoint = ref(null)
 const dialogAuth = ref(false)
 const username = ref('')
@@ -233,20 +317,20 @@ const showNotification = (message, color = 'positive') => {
     message,
     color,
     position: 'top-right',
-    timeout: 2000
+    timeout: 2000,
   })
 }
 
 // API endpoints configuration
 const api = axios.create({
   baseURL: 'http://127.0.0.1:8000/api',
-  timeout: 5000
+  timeout: 5000,
 })
 
 // Add response interceptor
 api.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     if (error.code === 'ERR_NETWORK') {
       showNotification('Network error: Please check if the server is running', 'negative')
     }
@@ -258,7 +342,7 @@ const getEndpoints = async () => {
   try {
     loadingEndpoints.value = true
     const response = await api.get('/connection/', {
-      params: { url: serverUrl.value }
+      params: { url: serverUrl.value },
     })
     if (response.data.status === 'connected') {
       await disconnect() // Properly awaiting the function
@@ -284,14 +368,13 @@ const beforeConnect = async (index) => {
 }
 
 const connect = async () => {
-
   try {
     loadingConnectAuth.value = true
     await api.post('/connection/', {
       endpoint: selectedEndpoint.value,
       username: username.value,
-      password: password.value
-    });
+      password: password.value,
+    })
     showNotification('Connected successfully')
     isConnected.value = true
     dialogAuth.value = false
@@ -324,7 +407,7 @@ const getRegisteredNode = async () => {
   try {
     const response = await api.get('/register/')
     registeredNodes.value = response.data.registered_nodes
-    console.log("activeSubscriptions.value : ", registeredNodes.value )
+    console.log('activeSubscriptions.value : ', registeredNodes.value)
   } catch (err) {
     showNotification(err.response.data.message, 'negative')
   } finally {
@@ -337,7 +420,7 @@ const registerNode = async () => {
   loadingRegister.value = true
   try {
     const response = await api.post('/register/', {
-      node_ids: [registerNodeId.value]
+      node_ids: [registerNodeId.value],
     })
     registeredNodes.value = response.data.registered_nodes
     console.log(response)
@@ -355,7 +438,7 @@ const unregisterNode = async (UnregisterNode) => {
   loadingUnregister.value = true
   try {
     await api.delete('/register/', {
-      data: { node_ids: [UnregisterNode] }
+      data: { node_ids: [UnregisterNode] },
     })
     showNotification('Node unregistered successfully')
     await getRegisteredNode()
@@ -368,11 +451,11 @@ const unregisterNode = async (UnregisterNode) => {
 
 // Subscription management
 const getSubscriptions = async () => {
-  console.log("getSubscribed")
+  console.log('getSubscribed')
   try {
     const response = await api.get('/subscribe/')
     activeSubscriptions.value = response.data.active_subscriptions
-    console.log("activeSubscriptions.value : ", activeSubscriptions.value )
+    console.log('activeSubscriptions.value : ', activeSubscriptions.value)
   } catch (err) {
     showNotification(err.response.data.message, 'negative')
   } finally {
@@ -386,7 +469,7 @@ const subscribe = async () => {
   try {
     const response = await api.post('/subscribe/', {
       node_id: subscribeNodeId.value,
-      interval: subscribeInterval.value
+      interval: subscribeInterval.value,
     })
     showNotification('Subscription created successfully')
     await getSubscriptions()
@@ -401,7 +484,7 @@ const unsubscribe = async (subscriptionId) => {
   loadingUnsubscribe.value = true
   try {
     await api.delete('/subscribe/', {
-      data: { subscription_id: subscriptionId }
+      data: { subscription_id: subscriptionId },
     })
     showNotification('Unsubscribed successfully')
     await getSubscriptions()
@@ -428,7 +511,7 @@ const readValues = async () => {
   try {
     loadingRead.value = true
     const response = await api.post('/read-write/', {
-      node_ids: nodeIds.value.filter(node => node) // Filter out empty nodes
+      node_ids: nodeIds.value.filter((node) => node), // Filter out empty nodes
     })
     // Handle the response data
     if (typeof response.data === 'object') {
@@ -452,7 +535,7 @@ const writeValues = async () => {
   try {
     await api.put('/read-write/', {
       node_id: nodeIds.value,
-      value: values.value
+      value: values.value,
     })
 
     showNotification('Values written successfully')
@@ -467,30 +550,29 @@ const writeValues = async () => {
 }
 
 let url = `ws://127.0.0.1:8000/ws/socket-server/`
-const socket = new WebSocket(url);
-console.log("url",url)
+const socket = new WebSocket(url)
+console.log('url', url)
 // When the WebSocket is open, you can start receiving updates
-socket.onopen = function() {
-    console.log("WebSocket connection established.");
-};
+socket.onopen = function () {
+  console.log('WebSocket connection established.')
+}
 
 // Handle incoming messages
-socket.onmessage = function(event) {
-    const data = JSON.parse(event.data);
-    const timestamp = new Date().toLocaleString(); // Get current timestamp
-    console.log(`[${timestamp}] Received real-time data: `, data);
+socket.onmessage = function (event) {
+  const data = JSON.parse(event.data)
+  const timestamp = new Date().toLocaleString() // Get current timestamp
+  console.log(`[${timestamp}] Received real-time data: `, data)
 
-    subscribedNode.value[data.node_id] = data.value;
-};
+  subscribedNode.value[data.node_id] = data.value
+}
 
 // Handle any errors
-socket.onerror = function(error) {
-    console.log("WebSocket Error: ", error);
-};
+socket.onerror = function (error) {
+  console.log('WebSocket Error: ', error)
+}
 
 // When the WebSocket is closed
-socket.onclose = function() {
-    console.log("WebSocket connection closed.");
-};
-
+socket.onclose = function () {
+  console.log('WebSocket connection closed.')
+}
 </script>
