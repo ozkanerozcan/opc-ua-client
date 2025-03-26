@@ -43,8 +43,14 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 ### Connection Management
 
-![Connection Management](docs/images/connection-1.png)(docs/images/connection-2.png)
-_Discover and connect to OPC UA servers with security options_
+![Connection Initial](docs/images/connection-1.png)
+_Initial connection screen with server URL input_
+
+![Connection Endpoints](docs/images/connection-2.png)
+_Available endpoints with security options_
+
+![Connection Auth](docs/images/connection-3.png)
+_Authentication dialog for secure connections_
 
 ### Read/Write Operations
 
