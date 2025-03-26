@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="row q-col-gutter-md">
+    <div class="row q-col-gutter-md scroll">
       <!-- Connection Panel -->
       <div class="col-12">
         <q-card>

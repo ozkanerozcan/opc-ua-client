@@ -5,6 +5,7 @@ A full-stack web application for secure communication with OPC UA servers. Built
 ## Table of Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
 - [API Endpoints](#api-endpoints)
@@ -16,16 +17,19 @@ A full-stack web application for secure communication with OPC UA servers. Built
 ## 🌟 Features
 
 - **Server Connection**
+
   - Discover and connect to OPC UA servers.
   - Support for secure endpoints and encrypted communication.
   - Username/password and certificate-based authentication.
 
 - **Data Operations**
+
   - Read/write operations for one or multiple nodes.
   - Automatic data type detection and conversion.
   - Batch operations support.
 
 - **Real-time Updates**
+
   - WebSocket‑based live data subscription.
   - Configurable update intervals.
   - Real‑time value monitoring.
@@ -35,57 +39,79 @@ A full-stack web application for secure communication with OPC UA servers. Built
   - Connection state management.
   - Robust error handling and recovery.
 
+## 📸 Screenshots
+
+### Connection Management
+
+![Connection Management](docs/images/connection.png)
+_Discover and connect to OPC UA servers with security options_
+
+### Read/Write Operations
+
+![Read/Write](docs/images/read-write.png)
+_Read and write values to multiple nodes simultaneously_
+
+### Node Registration
+
+![Node Registration](docs/images/registration.png)
+_Register nodes for optimized access_
+
+### Subscription Management
+
+![Subscription](docs/images/subscription.png)
+_Monitor nodes in real-time with configurable intervals_
+
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.8+  
-- Node.js 14+  
-- npm or yarn  
+- Python 3.8+
+- Node.js 14+
+- npm or yarn
 - An OPC UA Server for testing
 
 ### Backend Setup
 
 1. **Create and activate a virtual environment:**
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
 2. **Install Python dependencies:**
 
-    ```bash
-    cd backend
-    pip install -r requirements.txt
-    ```
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
 
-    3. **Run migrations:**
+   3. **Run migrations:**
 
-    ```bash
-    python manage.py migrate
-    ```
+   ```bash
+   python manage.py migrate
+   ```
 
-4. **Start the Django server:**
+3. **Start the Django server:**
 
-    ```bash
-    python manage.py runserver
-    ```
+   ```bash
+   python manage.py runserver
+   ```
 
 ### Frontend Setup
 
 1. **Install dependencies:**
 
-    ```bash
-    cd frontend
-    npm install
-    ```
+   ```bash
+   cd frontend
+   npm install
+   ```
 
 2. **Start the development server:**
 
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
 
 ## 🔧 Configuration
 
@@ -93,9 +119,9 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 1. **Generate Certificates** (if using a secure connection):
 
-    ```bash
-    openssl req -x509 -newkey rsa:2048 -keyout opcua_client_key.pem -out opcua_client_cert.pem -days 365 -config openssl.conf -nodes
-    ```
+   ```bash
+   openssl req -x509 -newkey rsa:2048 -keyout opcua_client_key.pem -out opcua_client_cert.pem -days 365 -config openssl.conf -nodes
+   ```
 
 2. **Copy Certificates:**
 
@@ -103,19 +129,19 @@ A full-stack web application for secure communication with OPC UA servers. Built
 
 ## 📡 API Endpoints
 
-| **Endpoint** | **Method** | **Description** |
-|--------------|------------|-----------------|
-| `/api/connection/?url=<server_url>` | GET | Retrieve available endpoints from server |
-| `/api/connection/` | POST | Connect to server with selected endpoint configuration |
-| `/api/connection/` | DELETE | Disconnect from the server |
-| `/api/read-write/` | POST | Read values from one or multiple nodes |
-| `/api/read-write/` | PUT  | Write values to one or multiple nodes |
-| `/api/register/` | GET  | Get all registered nodes |
-| `/api/register/` | POST | Register nodes for optimized access |
-| `/api/register/` | DELETE | Unregister nodes |
-| `/api/subscribe/` | GET  | Get all active subscriptions |
-| `/api/subscribe/` | POST | Create a new subscription |
-| `/api/subscribe/` | DELETE | Delete a subscription |
+| **Endpoint**                        | **Method** | **Description**                                        |
+| ----------------------------------- | ---------- | ------------------------------------------------------ |
+| `/api/connection/?url=<server_url>` | GET        | Retrieve available endpoints from server               |
+| `/api/connection/`                  | POST       | Connect to server with selected endpoint configuration |
+| `/api/connection/`                  | DELETE     | Disconnect from the server                             |
+| `/api/read-write/`                  | POST       | Read values from one or multiple nodes                 |
+| `/api/read-write/`                  | PUT        | Write values to one or multiple nodes                  |
+| `/api/register/`                    | GET        | Get all registered nodes                               |
+| `/api/register/`                    | POST       | Register nodes for optimized access                    |
+| `/api/register/`                    | DELETE     | Unregister nodes                                       |
+| `/api/subscribe/`                   | GET        | Get all active subscriptions                           |
+| `/api/subscribe/`                   | POST       | Create a new subscription                              |
+| `/api/subscribe/`                   | DELETE     | Delete a subscription                                  |
 
 ## 🔒 Security
 
